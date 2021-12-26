@@ -20,7 +20,10 @@ def predict():
             query = pd.get_dummies(pd.DataFrame(json_))
             query = query.reindex(columns=model_columns, fill_value=0)
 
-            prediction = list(blr.predict(query)[0])
+            yhat = blr.predict(query)
+            yhat = yhat.reshape(yhat.shape[0],)
+
+            prediction = list(yhat)
 
             return jsonify({'prediction': str(prediction)})
         except:

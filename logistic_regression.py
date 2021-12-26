@@ -10,7 +10,7 @@ class BinaryLogisticRegressionBase:
     
     @staticmethod
     def _add_bias(X):
-        return np.hstack((np.ones((X.shape[0], 1)), X))\
+        return np.hstack((np.ones((X.shape[0], 1)), X))
     
     @staticmethod
     def _sigmoid(theta):
@@ -53,6 +53,7 @@ class BinaryLogisticRegression(BinaryLogisticRegressionBase):
 # # TESTING CODE
 # from sklearn.datasets import load_iris
 # from sklearn.linear_model import LogisticRegression
+# from sklearn.metrics import accuracy_score
 # import numpy as np
 # import plotly
 
@@ -64,11 +65,9 @@ class BinaryLogisticRegression(BinaryLogisticRegressionBase):
 # blr.fit(X, y)
 # yhat = blr.predict(X)
 # yhat = yhat.reshape(yhat.shape[0],)
-# print(yhat.shape)
-# print(yhat)
+# print("accuracy score: ", accuracy_score(y, yhat))
 
 # lr = LogisticRegression()
 # lr.fit(X, y)
 # yhat_lr = lr.predict(X)
-# print(yhat_lr.shape)
-# print(yhat_lr)
+# print("accuracy score: ", accuracy_score(y, yhat_lr))

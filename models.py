@@ -1,4 +1,5 @@
 from pandas.core.arrays import categorical
+from sklearn.linear_model import LogisticRegression
 import numpy as np
 import pandas as pd
 import logistic_regression
@@ -23,12 +24,14 @@ X = df_ohe[df_ohe.columns.difference(['Survived'])]
 y = df_ohe['Survived']
 
 # initialize logistic regression model and fit it
-blr = logistic_regression.BinaryLogisticRegression(eta = 0.1, iterations=12)
+# blr = logistic_regression.BinaryLogisticRegression(eta = 0.1, iterations=100)
+# blr.fit(X, y)
+blr = LogisticRegression()
 blr.fit(X, y)
 print(blr)
 
 # saving the model
-from sklearn.externals import joblib
+import joblib
 joblib.dump(blr, 'model.pkl')
 print("model dumped!")
 
